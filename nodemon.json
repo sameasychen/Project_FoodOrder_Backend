@@ -1,0 +1,6 @@
+{
+    "env":{
+        "MONGO_ATLAS_PW": "foodorder_thePass",
+        "MONGO_ATLAS_NAME": "FoodOrder-Backend"
+    }
+}
