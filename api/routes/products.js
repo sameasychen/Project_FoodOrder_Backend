@@ -32,18 +32,28 @@ router.post('/', (req,res, next)=>{
     });
 });
 
-router.get('/:productId', (req,res, next)=>{
+router.get("/:productId", (req, res, next)=>{
     const id = req.params.productId;
-    if( id === 'special'){
-    res.status(200).json({
-        message:'You discovered the special ID',
-        id: id
-    });
-}else {
-    res.status(200).json({
-        message: 'You passed and ID'
+    Product.findById(id)
+    .exec()
+    .then(doc=>{
+        console.log(doc);
+        res.status(200).json(doc);
     })
-}
+    .catch(err =>{
+        console.log(err);
+        res.status(500).json({error:err});
+    });
+//     if( id === 'special'){
+//     res.status(200).json({
+//         message:'You discovered the special ID',
+//         id: id
+//     });
+// }else {
+//     res.status(200).json({
+//         message: 'You passed and ID'
+//     })
+// }
 });
 
 router.patch('/:productId', (req,res, next)=>{
